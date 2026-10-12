@@ -1,0 +1,13 @@
+BEGIN 1:axi_slave_adapter:fast:work
+    w_pending :  1:aximem_ss_tb:fast:work
+    addr :  1:aximem_ss_tb:fast:work
+    do_write :  1:aximem_ss_tb:fast:work
+    wstrb :  1:aximem_ss_tb:fast:work
+    aw_pending :  1:aximem_ss_tb:fast:work
+    ar_pending :  1:aximem_ss_tb:fast:work
+    valid :  1:aximem_ss_tb:fast:work
+    do_read :  1:aximem_ss_tb:fast:work
+END 
+BEGIN 1:sram:fast:work
+    mem :  1:aximem_ss_tb:fast:work
+END 

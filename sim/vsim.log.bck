@@ -1,0 +1,306 @@
+# //  Questa Sim-64
+# //  Version 2024.2 linux_x86_64 May 20 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# vsim -64 -voptargs="+acc" work.aximem_ss_tb -l vsim.log 
+# Start time: 04:10:39 on Oct 12,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.aximem_ss_tb(fast)
+# Loading work.aximem_ss(fast)
+# Loading work.axi_slave_adapter(fast)
+# Loading work.sram(fast)
+add wave -position insertpoint  \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/clk \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/resetn \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_arvalid \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_arready \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_araddr \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_rvalid \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_rready \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_rdata \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_awvalid \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_awready \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_awaddr \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_wvalid \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_wready \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_wdata \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/axi_wstrb \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/valid \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/ready \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/addr \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/wdata_t \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/wstrb_t \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/aw_pending \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/w_pending \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/ar_pending \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/do_read \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/do_write
+run -all
+# [PASS] awready after reset: 1
+# [PASS] wready after reset: 1
+# [PASS] arready after reset: 1
+# [PASS] bvalid after reset: 0
+# [PASS] rvalid after reset: 0
+# [PASS] full word write/read: 0xdeadbeef
+# [PASS] byte strobes update bytes 0 and 2: 0x11553377
+# [PASS] write data before write address: 0xcafebabe
+# [PASS] bvalid held while bready is low: 1
+# [PASS] awready blocked during pending B: 0
+# [PASS] wready blocked during pending B: 0
+# [PASS] bvalid held while bready is low: 1
+# [PASS] awready blocked during pending B: 0
+# [PASS] wready blocked during pending B: 0
+# [PASS] bvalid held while bready is low: 1
+# [PASS] awready blocked during pending B: 0
+# [PASS] wready blocked during pending B: 0
+# [PASS] rvalid held while rready is low: 1
+# [PASS] arready blocked during pending R: 0
+# [PASS] rdata stable while rready is low: 0x0badc0de
+# [PASS] rvalid held while rready is low: 1
+# [PASS] arready blocked during pending R: 0
+# [PASS] rdata stable while rready is low: 0x0badc0de
+# [PASS] rvalid held while rready is low: 1
+# [PASS] arready blocked during pending R: 0
+# [PASS] rdata stable while rready is low: 0x0badc0de
+# [PASS] read data held while rready is low: 0x0badc0de
+# [INFO] starting AW/W versus AR SRAM arbitration test
+# [PASS] collision: AW transaction is pending after handshake: 1
+# [PASS] collision: W transaction is pending after handshake: 1
+# [PASS] collision: no read transaction is pending yet: 0
+# [PASS] collision: SRAM address selects pending write before AR: 0x00000030
+# [PASS] collision: pending write is issued to SRAM first: 1
+# [PASS] collision: issued SRAM transaction is a write: 0x0000000f
+# [FAIL] collision: active SRAM write uses AW address: got 0x00000034, expected 0x00000030
+# [FAIL] collision: active write must not target AR address: active write targets forbidden address 0x00000034
+# [PASS] collision: losing AR transaction remains pending while write is active: 1
+# [PASS] collision: write response completes first: 1
+# [FAIL] collision: read response waits until write completes: got 1, expected 0
+# [PASS] collision: read remains pending after write response: 1
+# [PASS] collision: delayed read returns original read-address data: 0xfacecafe
+# [FAIL] collision: final SRAM data at write address: got 0x13579bdf, expected 0x2468ace0
+# [FAIL] collision: final SRAM data at read address: got 0x2468ace0, expected 0xfacecafe
+# [FAIL] collision: final AXI readback from write address: got 0x13579bdf, expected 0x2468ace0
+# [FAIL] collision: final AXI readback from read address: got 0x2468ace0, expected 0xfacecafe
+# ** Fatal: [FAIL] aximem_ss_tb completed with 7 error(s)
+#    Time: 810 ns  Scope: aximem_ss_tb File: /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv Line: 99
+# ** Note: $finish    : /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv(99)
+#    Time: 810 ns  Iteration: 1  Instance: /aximem_ss_tb
+# 1
+# Break in Module aximem_ss_tb at /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv line 99
+add wave -position insertpoint  \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/araddr \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/awaddr
+run -all
+# ** Fatal: (vsim-VCD-8109) Unable to write more data to VCD file "aximem_ss_tb.vcd"
+#    Time: 586284840 ns  Iteration: 1  Instance: /aximem_ss_tb/dut/u_axi_slave_adapter File: /home/arimeg01/Workspace/soc-project/rtl/mem_interface/axi_slave_adapter.v
+# Fatal error in file /home/arimeg01/Workspace/soc-project/rtl/mem_interface/axi_slave_adapter.v
+# 
+
+restart
+# Closing VCD file "aximem_ss_tb.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.aximem_ss_tb(fast)
+# Loading work.aximem_ss(fast)
+# Loading work.axi_slave_adapter(fast)
+# Loading work.sram(fast)
+run -all
+# [PASS] awready after reset: 1
+# [PASS] wready after reset: 1
+# [PASS] arready after reset: 1
+# [PASS] bvalid after reset: 0
+# [PASS] rvalid after reset: 0
+# [PASS] full word write/read: 0xdeadbeef
+# [PASS] byte strobes update bytes 0 and 2: 0x11553377
+# [PASS] write data before write address: 0xcafebabe
+# [PASS] bvalid held while bready is low: 1
+# [PASS] awready blocked during pending B: 0
+# [PASS] wready blocked during pending B: 0
+# [PASS] bvalid held while bready is low: 1
+# [PASS] awready blocked during pending B: 0
+# [PASS] wready blocked during pending B: 0
+# [PASS] bvalid held while bready is low: 1
+# [PASS] awready blocked during pending B: 0
+# [PASS] wready blocked during pending B: 0
+# [PASS] rvalid held while rready is low: 1
+# [PASS] arready blocked during pending R: 0
+# [PASS] rdata stable while rready is low: 0x0badc0de
+# [PASS] rvalid held while rready is low: 1
+# [PASS] arready blocked during pending R: 0
+# [PASS] rdata stable while rready is low: 0x0badc0de
+# [PASS] rvalid held while rready is low: 1
+# [PASS] arready blocked during pending R: 0
+# [PASS] rdata stable while rready is low: 0x0badc0de
+# [PASS] read data held while rready is low: 0x0badc0de
+# [INFO] starting AW/W versus AR SRAM arbitration test
+# [PASS] collision: AW transaction is pending after handshake: 1
+# [PASS] collision: W transaction is pending after handshake: 1
+# [PASS] collision: no read transaction is pending yet: 0
+# [PASS] collision: SRAM address selects pending write before AR: 0x00000030
+# [PASS] collision: pending write is issued to SRAM first: 1
+# [PASS] collision: issued SRAM transaction is a write: 0x0000000f
+# [FAIL] collision: active SRAM write uses AW address: got 0x00000034, expected 0x00000030
+# [FAIL] collision: active write must not target AR address: active write targets forbidden address 0x00000034
+# [PASS] collision: losing AR transaction remains pending while write is active: 1
+# [PASS] collision: write response completes first: 1
+# [FAIL] collision: read response waits until write completes: got 1, expected 0
+# [PASS] collision: read remains pending after write response: 1
+# [PASS] collision: delayed read returns original read-address data: 0xfacecafe
+# [FAIL] collision: final SRAM data at write address: got 0x13579bdf, expected 0x2468ace0
+# [FAIL] collision: final SRAM data at read address: got 0x2468ace0, expected 0xfacecafe
+# [FAIL] collision: final AXI readback from write address: got 0x13579bdf, expected 0x2468ace0
+# [FAIL] collision: final AXI readback from read address: got 0x2468ace0, expected 0xfacecafe
+# ** Fatal: [FAIL] aximem_ss_tb completed with 7 error(s)
+#    Time: 810 ns  Scope: aximem_ss_tb File: /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv Line: 99
+# ** Note: $finish    : /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv(99)
+#    Time: 810 ns  Iteration: 1  Instance: /aximem_ss_tb
+# 1
+# Break in Module aximem_ss_tb at /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv line 99
+add wave -position insertpoint  \
+sim:/aximem_ss_tb/dut/u_sram/mem
+# (vsim-4077) Logging very large object: /aximem_ss_tb/dut/u_sram/mem
+add wave -position insertpoint  \
+sim:/aximem_ss_tb/dut/u_sram/word_addr
+restart
+# Closing VCD file "aximem_ss_tb.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.aximem_ss_tb(fast)
+# Loading work.aximem_ss(fast)
+# Loading work.axi_slave_adapter(fast)
+# Loading work.sram(fast)
+run -all
+# [PASS] awready after reset: 1
+# [PASS] wready after reset: 1
+# [PASS] arready after reset: 1
+# [PASS] bvalid after reset: 0
+# [PASS] rvalid after reset: 0
+# [PASS] full word write/read: 0xdeadbeef
+# [PASS] byte strobes update bytes 0 and 2: 0x11553377
+# [PASS] write data before write address: 0xcafebabe
+# [PASS] bvalid held while bready is low: 1
+# [PASS] awready blocked during pending B: 0
+# [PASS] wready blocked during pending B: 0
+# [PASS] bvalid held while bready is low: 1
+# [PASS] awready blocked during pending B: 0
+# [PASS] wready blocked during pending B: 0
+# [PASS] bvalid held while bready is low: 1
+# [PASS] awready blocked during pending B: 0
+# [PASS] wready blocked during pending B: 0
+# [PASS] rvalid held while rready is low: 1
+# [PASS] arready blocked during pending R: 0
+# [PASS] rdata stable while rready is low: 0x0badc0de
+# [PASS] rvalid held while rready is low: 1
+# [PASS] arready blocked during pending R: 0
+# [PASS] rdata stable while rready is low: 0x0badc0de
+# [PASS] rvalid held while rready is low: 1
+# [PASS] arready blocked during pending R: 0
+# [PASS] rdata stable while rready is low: 0x0badc0de
+# [PASS] read data held while rready is low: 0x0badc0de
+# [INFO] starting AW/W versus AR SRAM arbitration test
+# [PASS] collision: AW transaction is pending after handshake: 1
+# [PASS] collision: W transaction is pending after handshake: 1
+# [PASS] collision: no read transaction is pending yet: 0
+# [PASS] collision: SRAM address selects pending write before AR: 0x00000030
+# [PASS] collision: pending write is issued to SRAM first: 1
+# [PASS] collision: issued SRAM transaction is a write: 0x0000000f
+# [FAIL] collision: active SRAM write uses AW address: got 0x00000034, expected 0x00000030
+# [FAIL] collision: active write must not target AR address: active write targets forbidden address 0x00000034
+# [PASS] collision: losing AR transaction remains pending while write is active: 1
+# [PASS] collision: write response completes first: 1
+# [FAIL] collision: read response waits until write completes: got 1, expected 0
+# [PASS] collision: read remains pending after write response: 1
+# [PASS] collision: delayed read returns original read-address data: 0xfacecafe
+# [FAIL] collision: final SRAM data at write address: got 0x13579bdf, expected 0x2468ace0
+# [FAIL] collision: final SRAM data at read address: got 0x2468ace0, expected 0xfacecafe
+# [FAIL] collision: final AXI readback from write address: got 0x13579bdf, expected 0x2468ace0
+# [FAIL] collision: final AXI readback from read address: got 0x2468ace0, expected 0xfacecafe
+# ** Fatal: [FAIL] aximem_ss_tb completed with 7 error(s)
+#    Time: 810 ns  Scope: aximem_ss_tb File: /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv Line: 99
+# ** Note: $finish    : /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv(99)
+#    Time: 810 ns  Iteration: 1  Instance: /aximem_ss_tb
+# 1
+# Break in Module aximem_ss_tb at /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv line 99
+add wave -position insertpoint  \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/wdata \
+sim:/aximem_ss_tb/dut/u_axi_slave_adapter/wstrb
+restart
+# Closing VCD file "aximem_ss_tb.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.aximem_ss_tb(fast)
+# Loading work.aximem_ss(fast)
+# Loading work.axi_slave_adapter(fast)
+# Loading work.sram(fast)
+run -all
+# [PASS] awready after reset: 1
+# [PASS] wready after reset: 1
+# [PASS] arready after reset: 1
+# [PASS] bvalid after reset: 0
+# [PASS] rvalid after reset: 0
+# [PASS] full word write/read: 0xdeadbeef
+# [PASS] byte strobes update bytes 0 and 2: 0x11553377
+# [PASS] write data before write address: 0xcafebabe
+# [PASS] bvalid held while bready is low: 1
+# [PASS] awready blocked during pending B: 0
+# [PASS] wready blocked during pending B: 0
+# [PASS] bvalid held while bready is low: 1
+# [PASS] awready blocked during pending B: 0
+# [PASS] wready blocked during pending B: 0
+# [PASS] bvalid held while bready is low: 1
+# [PASS] awready blocked during pending B: 0
+# [PASS] wready blocked during pending B: 0
+# [PASS] rvalid held while rready is low: 1
+# [PASS] arready blocked during pending R: 0
+# [PASS] rdata stable while rready is low: 0x0badc0de
+# [PASS] rvalid held while rready is low: 1
+# [PASS] arready blocked during pending R: 0
+# [PASS] rdata stable while rready is low: 0x0badc0de
+# [PASS] rvalid held while rready is low: 1
+# [PASS] arready blocked during pending R: 0
+# [PASS] rdata stable while rready is low: 0x0badc0de
+# [PASS] read data held while rready is low: 0x0badc0de
+# [INFO] starting AW/W versus AR SRAM arbitration test
+# [PASS] collision: AW transaction is pending after handshake: 1
+# [PASS] collision: W transaction is pending after handshake: 1
+# [PASS] collision: no read transaction is pending yet: 0
+# [PASS] collision: SRAM address selects pending write before AR: 0x00000030
+# [PASS] collision: pending write is issued to SRAM first: 1
+# [PASS] collision: issued SRAM transaction is a write: 0x0000000f
+# [FAIL] collision: active SRAM write uses AW address: got 0x00000034, expected 0x00000030
+# [FAIL] collision: active write must not target AR address: active write targets forbidden address 0x00000034
+# [PASS] collision: losing AR transaction remains pending while write is active: 1
+# [PASS] collision: write response completes first: 1
+# [FAIL] collision: read response waits until write completes: got 1, expected 0
+# [PASS] collision: read remains pending after write response: 1
+# [PASS] collision: delayed read returns original read-address data: 0xfacecafe
+# [FAIL] collision: final SRAM data at write address: got 0x13579bdf, expected 0x2468ace0
+# [FAIL] collision: final SRAM data at read address: got 0x2468ace0, expected 0xfacecafe
+# [FAIL] collision: final AXI readback from write address: got 0x13579bdf, expected 0x2468ace0
+# [FAIL] collision: final AXI readback from read address: got 0x2468ace0, expected 0xfacecafe
+# ** Fatal: [FAIL] aximem_ss_tb completed with 7 error(s)
+#    Time: 810 ns  Scope: aximem_ss_tb File: /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv Line: 99
+# ** Note: $finish    : /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv(99)
+#    Time: 810 ns  Iteration: 1  Instance: /aximem_ss_tb
+# 1
+# Break in Module aximem_ss_tb at /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv line 99
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /home/arimeg01/Workspace/soc-project/sim/wave.do
+quit
+# End time: 05:53:33 on Oct 12,2026, Elapsed time: 1:42:54
+# Errors: 1, Warnings: 1

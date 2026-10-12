@@ -1,0 +1,85 @@
+# //  Questa Sim-64
+# //  Version 2024.2 linux_x86_64 May 20 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# vsim -64 -voptargs="+acc" work.aximem_ss_tb -l vsim.log 
+# Start time: 08:36:43 on Oct 12,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.aximem_ss_tb(fast)
+# Loading work.aximem_ss(fast)
+# Loading work.axi_slave_adapter(fast)
+# Loading work.sram(fast)
+do /home/arimeg01/Workspace/soc-project/sim/wave.do
+# (vsim-4077) Logging very large object: /aximem_ss_tb/dut/u_sram/mem
+# (vsim-4077) Logging very large object: /aximem_ss_tb/dut/u_sram/mem
+run -all
+# [70.00ns] [PASS] awready after reset: 1
+# [70.00ns] [PASS] wready after reset: 1
+# [70.00ns] [PASS] arready after reset: 1
+# [70.00ns] [PASS] bvalid after reset: 0
+# [70.00ns] [PASS] rvalid after reset: 0
+# [160.00ns] [PASS] full word write/read: 0xdeadbeef
+# [300.00ns] [PASS] byte strobes update bytes 0 and 2: 0x11553377
+# [430.00ns] [PASS] write data before write address: 0xcafebabe
+# [470.00ns] [PASS] bvalid held while bready is low: 1
+# [470.00ns] [PASS] awready blocked during pending B: 0
+# [470.00ns] [PASS] wready blocked during pending B: 0
+# [480.00ns] [PASS] bvalid held while bready is low: 1
+# [480.00ns] [PASS] awready blocked during pending B: 0
+# [480.00ns] [PASS] wready blocked during pending B: 0
+# [490.00ns] [PASS] bvalid held while bready is low: 1
+# [490.00ns] [PASS] awready blocked during pending B: 0
+# [490.00ns] [PASS] wready blocked during pending B: 0
+# [540.00ns] [PASS] rvalid held while rready is low: 1
+# [540.00ns] [PASS] arready blocked during pending R: 0
+# [540.00ns] [PASS] rdata stable while rready is low: 0x0badc0de
+# [550.00ns] [PASS] rvalid held while rready is low: 1
+# [550.00ns] [PASS] arready blocked during pending R: 0
+# [550.00ns] [PASS] rdata stable while rready is low: 0x0badc0de
+# [560.00ns] [PASS] rvalid held while rready is low: 1
+# [560.00ns] [PASS] arready blocked during pending R: 0
+# [560.00ns] [PASS] rdata stable while rready is low: 0x0badc0de
+# [580.00ns] [PASS] read data held while rready is low: 0x0badc0de
+# [580.00ns] [INFO] starting AW/W versus AR SRAM arbitration test
+# [696.00ns] [PASS] collision: AW transaction is pending after handshake: 1
+# [696.00ns] [PASS] collision: W transaction is pending after handshake: 1
+# [696.00ns] [PASS] collision: no read transaction is pending yet: 0
+# [696.00ns] [PASS] collision: write is ready before AR arrives: 1
+# [706.00ns] [PASS] collision: pending write is issued to SRAM first: 1
+# [706.00ns] [PASS] collision: issued SRAM transaction is a write: 0x0000000f
+# [706.00ns] [PASS] collision: active SRAM write uses AW address: 0x00000030
+# [706.00ns] [PASS] collision: active write must not target AR address
+# [706.00ns] [PASS] collision: losing AR transaction remains pending while write is active: 1
+# [706.00ns] [PASS] collision: read arbitration waits while write is active: 0
+# [706.00ns] [PASS] collision: no read response while SRAM write is active: 0
+# [720.00ns] [PASS] collision: write response completes first: 1
+# [720.00ns] [PASS] collision: read remains pending after write response: 1
+# [736.00ns] [PASS] collision: delayed read returns read-address data: 0xfacecafe
+# [746.00ns] [PASS] collision: read response cleared after rready: 0
+# [746.00ns] [PASS] collision: read transaction is no longer pending: 0
+# [746.00ns] [PASS] collision: adapter is ready for a new read: 1
+# [746.00ns] [PASS] collision: write response cleared after bready: 0
+# [746.00ns] [PASS] collision: final SRAM data at write address: 0x2468ace0
+# [746.00ns] [PASS] collision: final SRAM data at read address: 0xfacecafe
+# [780.00ns] [PASS] collision: final AXI readback from write address: 0x2468ace0
+# [820.00ns] [PASS] collision: final AXI readback from read address: 0xfacecafe
+# [820.00ns] [PASS] aximem_ss_tb completed successfully
+# ** Note: $finish    : /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv(97)
+#    Time: 820 ns  Iteration: 1  Instance: /aximem_ss_tb
+# 1
+# Break in Module aximem_ss_tb at /home/arimeg01/Workspace/soc-project/tb/aximem_ss_tb.sv line 97
+# End time: 10:18:09 on Oct 12,2026, Elapsed time: 1:41:26
+# Errors: 0, Warnings: 1
