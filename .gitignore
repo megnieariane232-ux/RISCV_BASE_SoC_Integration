@@ -1,0 +1,11 @@
+*.vcd
+*.fst
+*.log
+*.o
+*.elf
+*.bin
+*.wlf
+*.bck
+work/
+build/
+__pycache__/
